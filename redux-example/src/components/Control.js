@@ -1,13 +1,17 @@
 /**
  * Created by kiost on 2017-06-13.
  */
-import React, {Component} from 'react';
+import React, {Component, PropTypes} from 'react';
 
 const propTypes = {
-    onPlus: React.PropTypes.func,
-    onSubtract: React.PropTypes.func,
-    onRandomizeColor: React.PropTypes.func
+    onPlus: PropTypes.func,
+    onSubtract: PropTypes.func,
+    onRandomizeColor: PropTypes.func
 };
+
+function createWarning(funcName) {
+    return () => console.warn(funcName + 'is not defined!');
+}
 
 const defaultProps = {
     onPlus: createWarning('onPlus'),
@@ -15,15 +19,8 @@ const defaultProps = {
     onRandomizeColor: createWarning('onRandomizeColor')
 };
 
-function createWarning(funcName) {
-    return () => console.warn(funcName + 'is not defined!');
-}
 
 class Control extends Component {
-    constructor(props) {
-        super(props);
-    };
-
     render() {
         return (
             <div>
